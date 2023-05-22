@@ -126,7 +126,10 @@ const ApprovedUsersTable = ({role, getAllProfiles, profileList, setProfileList, 
         setRowData(row);
         setOpen(true);
     };
-  
+    useEffect(() =>{
+        console.log("----------profileList : ", profileList);
+        console.log("----------rows : ", rows);
+    },[profileList])
     return (
         <Box sx={{width: '100%',}}>
             <Paper sx={{width: '100%', mb: 2,}}>

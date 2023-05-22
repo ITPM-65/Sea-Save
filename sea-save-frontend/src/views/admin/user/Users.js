@@ -39,6 +39,14 @@ const Users = ({role}) => {
                 console.log("profile GET : ", response.data)
 
                 setProfileList(response.data);
+                const approved = response.data.filter((value) => value?.adminApproval === true)
+                const pending = response.data.filter((value) => value?.adminApproval === false)
+                setApprovedProfileList(approved)
+                setApprovedRows(approved)
+                setPendingProfileList(pending)
+                setPendingRows(pending)
+                console.log("approved GET : ", approved)
+                console.log("pending GET : ", pending)
                 setRows(response.data)
             })
     }

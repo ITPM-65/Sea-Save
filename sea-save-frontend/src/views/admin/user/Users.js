@@ -18,7 +18,11 @@ const Users = ({role}) => {
     const [value, setValue] = React.useState(0);
     const theme = useTheme();
     const [rows, setRows] = useState([]);
+    const [pendingRows, setPendingRows] = useState([]);
+    const [approvedRows, setApprovedRows] = useState([]);
     const [profileList, setProfileList] = useState([]);
+    const [pendingProfileList, setPendingProfileList] = useState([]);
+    const [approvedProfileList, setApprovedProfileList] = useState([]);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -35,7 +39,7 @@ const Users = ({role}) => {
                 console.log("profile GET : ", response.data)
 
                 setProfileList(response.data);
-                setRows(response.data);
+                setRows(response.data)
             })
     }
 
@@ -59,8 +63,8 @@ const Users = ({role}) => {
                 <TabList onChange={handleChange} aria-label="lab API tabs example" textColor="primary"
                          indicatorColor="primary">
                     {/*<Tab label="Gallery" {...a11yProps(0)} />*/}
-                    <Tab label="Pending" {...a11yProps(0)} />
-                    <Tab label="Approved" {...a11yProps(1)} />
+                    <Tab label="Approved" {...a11yProps(0)} />
+                    <Tab label="Pending" {...a11yProps(1)} />
                 </TabList>
             </Box>
             <SwipeableViews
@@ -69,10 +73,10 @@ const Users = ({role}) => {
                 onChangeIndex={handleChangeIndex}
             >
                 <TabPanel value={value} index={0} dir={theme.direction}>
-                    {value === 0 && <PendingUsersTable role={role} rows={rows} profileList={profileList} setProfileList={setProfileList} setRows={setRows} getAllProfiles={() => getAllProfiles()}/>}
+                    {value === 0 && <PendingUsersTable role={role} rows={rows.filter((value) => value?.adminApproval === true)} profileList={profileList} setProfileList={setProfileList} setRows={setRows} getAllProfiles={() => getAllProfiles()}/>}
                 </TabPanel>
                 <TabPanel value={value} index={1} dir={theme.direction}>
-                    {value === 1 && <ApprovedUsersTable role={role} rows={rows} profileList={profileList} setProfileList={setProfileList} setRows={setRows} getAllProfiles={() => getAllProfiles()}/>}
+                    {value === 1 && <ApprovedUsersTable role={role} rows={rows.filter((value) => value?.adminApproval === false)} profileList={profileList} setProfileList={setProfileList} setRows={setRows} getAllProfiles={() => getAllProfiles()}/>}
                 </TabPanel>
             </SwipeableViews>
         </TabContext>

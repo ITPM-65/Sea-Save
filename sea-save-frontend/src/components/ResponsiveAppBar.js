@@ -150,7 +150,7 @@ function ResponsiveAppBar() {
                             <Button
                                 key={page}
                                 onClick={() => handleCloseNavMenu(page.route)}
-                                sx={{my: 2, mx:5, color: 'white', display: 'block'}}
+
                             >
                                 {page.name}
                             </Button>

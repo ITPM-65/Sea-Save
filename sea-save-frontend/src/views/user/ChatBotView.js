@@ -3,6 +3,7 @@ import ResponsiveAppBar from "../../components/ResponsiveAppBar";
 import ChatBot from "react-simple-chatbot";
 import {ThemeProvider} from 'styled-components';
 import {Grid} from "@mui/material";
+import CustomFooter from "../../components/footer/CustomFooter";
 
 const ChatBotView = () => {
 
@@ -21,7 +22,7 @@ const ChatBotView = () => {
     const steps = [
         {
             id: "Greet",
-            message: "Hello, Welcome to our shop",
+            message: "Hello, Welcome to our website",
             trigger: "Done",
         },
         {
@@ -43,40 +44,31 @@ const ChatBotView = () => {
             id: "issues",
             options: [
                 {
-                    value: "React",
-                    label: "React",
-                    trigger: "React",
+                    value: "Purpose",
+                    label: "Purpose",
+                    trigger: "Purpose",
                 },
                 {
-                    value: "Angular",
-                    label: "Angular",
-                    trigger: "Angular"
+                    value: "About",
+                    label: "About",
+                    trigger: "About"
                 },
-                {
-                    value: "Malith",
-                    label: "Malith",
-                    trigger: "Malith"
-                },
+              
             ],
         },
         {
-            id: "React",
+            id: "Purpose",
             message:
-                "Thanks for letting your React issue, Our team will resolve your issue ASAP",
+                "The website raises awareness about marine ecosystems, biodiversity, and threats. It provides educational resources to emphasize the importance of preserving marine life.",
             end: true,
         },
         {
-            id: "Angular",
+            id: "About",
             message:
-                "Thanks for letting your Angular issue, Our team will resolve your issue ASAP",
+                "Welcome to our website dedicated to the mesmerizing world below the water's surface. Immerse yourself in the depths of our oceans, where an extraordinary array of life thrives in vibrant ecosystems. Explore the breathtaking beauty of coral reefs, home to a kaleidoscope of colorful fish, intricate formations, and fragile marine life. Learn about the delicate balance that sustains these underwater marvels and the pressing need to protect and preserve them. Discover the wonders of marine migrations, from the majestic movements of whales to the determined journeys of sea turtles. Uncover the challenges our oceans face, including pollution, overfishing, and climate change, and find inspiration in the stories of dedicated individuals and organizations working to safeguard our marine ecosystems. Join us on a journey of knowledge, appreciation, and action as we explore, protect, and celebrate life below water.",
             end: true,
         },
-        {
-            id: "Malith",
-            message:
-                "hdisd d dsf d d ds ",
-            end: true,
-        },
+       
     ];
 
     return (
@@ -91,6 +83,7 @@ const ChatBotView = () => {
                     <ChatBot steps={steps} />
                 </ThemeProvider>
             </Grid>
+            <CustomFooter/>
         </>
     );
 };

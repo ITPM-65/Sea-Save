@@ -55,7 +55,20 @@ const AnimalCard = ({data}) => {
         setExpanded(!expanded);
     };
 
+    const [imageHeight, setImageHeight] = useState(0);
 
+    useEffect(() => {
+        const calculateHeight = () => {
+            const img = new Image();
+            img.onload = () => {
+                setImageHeight(img.height);
+            };
+            img.src = data?.imageUrl;
+        };
+
+
+        calculateHeight();
+    }, [data?.imageUrl]);
         return (
         <>
             <Card sx={{width: "75vw"}}>
